@@ -5,16 +5,12 @@
  */
 package lt.bit.springapp.controllers;
 
-import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
 import lt.bit.springapp.db.Address;
 import lt.bit.springapp.db.Persons;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -67,7 +63,7 @@ public class AddressController {
         }
         if (idxA != null) {
             Address a = em.find(Address.class, idxA);
-            if (a == null){
+            if (a == null) {
                 return new ModelAndView("redirect:/addresses?idx=" + idx);
             }
             maw.addObject("address", a);
@@ -75,32 +71,32 @@ public class AddressController {
         maw.addObject("person", p);
         return maw;
     }
-    
-    @RequestMapping(method = RequestMethod.POST, path = "save") //METODAS IKI GALO NEAPRASYTAS!
+
+    @RequestMapping(method = RequestMethod.POST, path = "save")
     public String save(@RequestParam Integer idx, @RequestParam(required = false) Integer idxA,
             @RequestParam String ct, @RequestParam String ad, Date bd, @RequestParam String pc) {
         EntityManager em = (EntityManager) request.getAttribute("em");
         em.getTransaction().begin();
-        Persons p = null;
-        if (idx != null) {
-            p = em.find(Persons.class, idx);
-            if (p == null) {
-                return "redirect:/";
+        Persons p = em.find(Persons.class, idx);
+        if (p == null) {
+            return "redirect:/";
+        }
+        Address a = null;
+        if (idxA != null) {
+            a = em.find(Address.class, idxA);
+            if (a == null) {
+                return "redirect:/addresses?idx=" + idx;
             }
         } else {
-            p = new Persons();
+            a = new Address();
         }
-        p.setFirstName(fn);
-        p.setLastName(ln);
-        p.setBirthDate(bd);
-        p.setSalary(slr);
-        em.persist(p);
+        a.setCity(ct);
+        a.setAddress(ad);
+        a.setPostalCode(pc);
+        a.setPerson(p);
+        p.getAddressList().add(a);
+        em.persist(a);
         em.getTransaction().commit();
-        return "redirect:/";
+        return "redirect:/addresses?idx=" + idx;
     }
-    
-    //pabaigti:
-    //pagal ID (idx)  susirasti adresa, jei yra: pakeisti;
-    //jei nera adreso susirasti persona (set) ir sukurti adresa
-
 }

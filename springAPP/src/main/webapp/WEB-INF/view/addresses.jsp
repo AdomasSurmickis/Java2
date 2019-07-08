@@ -28,16 +28,16 @@
             Adress Id: <%= a.getId()%> Address: <%=a.getAddress()%> City: <%=a.getCity()%>
             Postal code: <%=a.getPostalCode()%>
             <!--visi ko norim get-->
-            <a href="./edit?idx=<%=p.getId()%>&idxA=<%=a.getId()%>"
+            <a href="addresses/edit?idx=<%=p.getId()%>&idxA=<%=a.getId()%>"
                >edit</a>
-            <a href="./delete?idx=<%=p.getId()%>&idxA=<%=a.getId()%>"
+            <a href="addresses/delete?idx=<%=p.getId()%>&idxA=<%=a.getId()%>"
                >delete</a>
             </li>
         <%}
         %>
         </ul>
         <!--same su delete-->
-        <a href="./edit?idx=<%=p.getId()%>">New</a>
+        <a href="addresses/edit?idx=<%=p.getId()%>">New</a>
         <a href="./">Back</a>
         <!--          dar 3 jsp page
                   dar servletus kurie trina
