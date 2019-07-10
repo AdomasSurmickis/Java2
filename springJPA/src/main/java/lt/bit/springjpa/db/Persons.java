@@ -34,7 +34,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Persons.findAll", query = "SELECT p FROM Persons p")
     , @NamedQuery(name = "Persons.findById", query = "SELECT p FROM Persons p WHERE p.id = :id")
-    , @NamedQuery(name = "Persons.findByFirstName", query = "SELECT p FROM Persons p WHERE p.firstName = :firstName")
+    , @NamedQuery(name = "Persons.findByFirstName", query = "SELECT p FROM Persons p WHERE p.firstName = :firstName")//vietoj = rayti like
     , @NamedQuery(name = "Persons.findByLastName", query = "SELECT p FROM Persons p WHERE p.lastName = :lastName")
     , @NamedQuery(name = "Persons.findByBirthDate", query = "SELECT p FROM Persons p WHERE p.birthDate = :birthDate")
     , @NamedQuery(name = "Persons.findBySalary", query = "SELECT p FROM Persons p WHERE p.salary = :salary")})
