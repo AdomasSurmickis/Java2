@@ -5,6 +5,7 @@
  */
 package lt.bit.springjpa.db;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -58,8 +59,10 @@ public class Persons implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "salary")
     private BigDecimal salary;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personId")
     private List<Address> addressList;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personId")
     private List<Contacts> contactsList;
 
