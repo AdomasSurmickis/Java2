@@ -5,7 +5,9 @@
  */
 package lt.bit.springjpa.db;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -26,10 +28,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 /**
  *
  * @author Dedelis
  */
+@JsonIgnoreProperties(  {"handler","hibernateLazyInitializer"} )
 @Entity
 @Table(name = "persons")
 @NamedQueries({
@@ -53,6 +57,7 @@ public class Persons implements Serializable {
     @Basic(optional = false)
     @Column(name = "last_name")
     private String lastName;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name = "birth_date")
     @Temporal(TemporalType.DATE)
     private Date birthDate;

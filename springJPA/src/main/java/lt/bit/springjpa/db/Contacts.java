@@ -5,6 +5,7 @@
  */
 package lt.bit.springjpa.db;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -22,6 +23,7 @@ import javax.persistence.Table;
  *
  * @author Dedelis
  */
+@JsonIgnoreProperties(  {"handler","hibernateLazyInitializer"} )
 @Entity
 @Table(name = "contacts")
 @NamedQueries({

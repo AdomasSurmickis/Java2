@@ -1,0 +1,10 @@
+lt\bit\springjpa\controllers\PersonRest.class
+lt\bit\springjpa\dao\AddressDAO.class
+lt\bit\springjpa\dao\ContactsDAO.class
+lt\bit\springjpa\db\Address.class
+lt\bit\springjpa\controllers\PersonController.class
+lt\bit\springjpa\controllers\ContactController.class
+lt\bit\springjpa\db\Persons.class
+lt\bit\springjpa\controllers\AddressController.class
+lt\bit\springjpa\db\Contacts.class
+lt\bit\springjpa\dao\PersonsDAO.class

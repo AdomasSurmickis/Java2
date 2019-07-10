@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <script>
+            function del() {
+                let idx = document.getElementById("idx").value;
+                fetch("http://localhost:8080/springJPA/rest/person/" + idx, {
+                    method: "DELETE"
+                }).then(response => {
+                    if (response.ok) {
+                        response.json()
+                                .then(str => console.log(str))
+                                .catch(err => console.log("failed to parse JSON", err));
+                    } else {
+                        console.log("server failure");
+                    }
+                });
+            }
+
+            function create() {
+                let p = {
+                    firstName: "Petras",
+                    lastName: "Petraitis",
+                    birthDate: new Date(),
+                    salary: 879.56
+                };
+                fetch("http://localhost:8080/springJPA/rest/person/", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: JSON.stringify(p)
+                }).then(response => {
+                    if (response.ok) {
+                        response.json()
+                                .then(str => console.log(str))
+                                .catch(err => console.log("failed to parse JSON", err));
+                    } else {
+                        console.log("server failure");
+                    }
+                });
+            }
+            function update() {
+                let p = {
+                    id: 73,
+                    firstName: "Petras1",
+                    lastName: "Petraitis2",
+                    birthDate: new Date(),
+                    salary: 8896.56
+                };
+                fetch("http://localhost:8080/springJPA/rest/person/", {
+                    method: "PUT",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: JSON.stringify(p)
+                }).then(response => {
+                    if (response.ok) {
+                        response.json()
+                                .then(str => console.log(str))
+                                .catch(err => console.log("failed to parse JSON", err));
+                    } else {
+                        console.log("server failure");
+                    }
+                });
+            }
+            
+            function getAll() {
+                fetch("http://localhost:8080/springJPA/rest/person/", {
+                    method: "GET"
+                }).then(response => {
+                    if (response.ok) {
+                        response.json()
+                                .then(str => console.log(str))
+                                .catch(err => console.log("failed to parse JSON", err));
+                    } else {
+                        console.log("server failure");
+                    }
+                });
+            }
+        </script>
+        <input id='idx'>
+        <button onclick="del();">Delete</button>
+        <button onclick="create();">Create</button>
+        <button onclick="update();">Update</button>
+        <button onclick="getAll();">Get All</button>
+        
+    </body>
+</html>
