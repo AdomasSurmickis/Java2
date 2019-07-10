@@ -38,6 +38,8 @@
         </ul>
         <!--same su delete-->
         <a href="addresses/edit?idx=<%=p.getId()%>">New</a>
+        <% //if(a.getId()!=null)
+            %>
         <a href="./">Back</a>
         <!--          dar 3 jsp page
                   dar servletus kurie trina

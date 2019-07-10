@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JavaJPA</title>
+        <title>JPA Spring</title>
     </head>
     <body>
         <h1>Peson list</h1>
@@ -24,7 +24,7 @@
                 Person ID: <%=p.getId()%> First name: <%=p.getFirstName()%> Last name: <%=p.getLastName()%> 
                 Birth date: <%=p.getBirthDate()%> Salary: <%=p.getSalary()%>
                 <a href="addresses?idx=<%=p.getId()%>">ADDRESSES</a>
-                <a href="contacts.jsp?idx=<%=p.getId()%>">CONTACTS</a>
+                <a href="contacts?idx=<%=p.getId()%>">CONTACTS</a>
                 <a href="edit?idx=<%=p.getId()%>">EDIT</a>
                 <a href="delete?idx=<%=p.getId()%>">Delete</a>
                 <br>

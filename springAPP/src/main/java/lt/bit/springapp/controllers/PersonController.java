@@ -34,8 +34,10 @@ public class PersonController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView list() {
         EntityManager em = (EntityManager) request.getAttribute("em");
-        Query q = em.createNamedQuery("Persons.findAll");
+//        Query q = em.createNamedQuery("Persons.findAll");
+        Query q = em.createQuery("select p from Persons p order by p.firstName");
         List<Persons> list = q.getResultList();
+        System.out.println(list);
         ModelAndView mav = new ModelAndView("personList");
         mav.addObject("personsList", list);
         return mav;

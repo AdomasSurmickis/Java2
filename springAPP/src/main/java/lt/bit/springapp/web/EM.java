@@ -36,6 +36,7 @@ public class EM implements Filter {
         try {
             chain.doFilter(request, response);
         } finally {
+            System.out.println("closing em");
             em.close();
         }
     }

@@ -28,7 +28,6 @@
             Postal code: <input name="pc" value="<%=(a == null) ? "" : a.getPostalCode()%>"> 
             <input type="submit" value="Save">
         </form>
-        <a href="./?idx=<%=p.getId()%>">Cancel</a>
-        <h1>Hello World!</h1>
+        <a href="../addresses?idx=<%=p.getId()%>">Cancel</a>
     </body>
 </html>
