@@ -5,6 +5,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:security="http://www.springframework.org/schema/security"
 
 
        xsi:schemaLocation="
@@ -13,7 +14,7 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 
 ">
     <context:annotation-config/>
@@ -52,5 +53,14 @@
     <tx:annotation-driven />
 
     <jpa:repositories base-package="lt.bit.springjpa.dao" />
+    
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/**/save" access="hasAuthority('ADMIN')" />
+        <security:intercept-url pattern="/**/delete" access="hasAuthority('ADMIN')" />
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider ref="authProvider"/>
+    </security:authentication-manager>
 
 </beans>
