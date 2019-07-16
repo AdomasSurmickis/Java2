@@ -55,7 +55,7 @@
     <jpa:repositories base-package="lt.bit.todos.dao" />
     
     <security:http auto-config="true">
-        <security:intercept-url pattern="/*" access="isAuthenticated()" />
+        <security:intercept-url pattern="/**" access="isAuthenticated()" />
     </security:http>
 
     <security:authentication-manager>
